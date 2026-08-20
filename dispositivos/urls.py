@@ -10,4 +10,9 @@ urlpatterns = [
         views.dispositivos_zona,
         name="por_zona",
     ),
+    path(
+        "dispositivos/<int:dispositivo_id>/estado/",
+        views.estado_dispositivo,
+        name="estado",
+    ),
 ]
