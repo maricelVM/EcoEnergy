@@ -1,9 +1,16 @@
-﻿from django.http import HttpResponse
+﻿from django.shortcuts import render
+from django.http import HttpResponse
 
 def inicio(request):
-    return HttpResponse(
-        "<h1>EcoEnergy</h1>"
-        "<p>Back End en funcionamiento</p>"
+    contexto = {
+        "sistema": "EcoEnergy",
+        "mensaje": "Monitoreo energético responsable",
+        "asignatura": "Programación Back End",
+    }
+    return render(
+        request,
+        "dispositivos/inicio.html",
+        contexto,
     )
 
 def dispositivos_zona(request, zona_id):
@@ -22,4 +29,16 @@ def estado_dispositivo(request, dispositivo_id):
         )
     return HttpResponse(
         f"Estado del dispositivo {dispositivo_id}: activo"
+    )
+
+def catalogo(request):
+    dispositivos = [
+        {"nombre": "Medidor inteligente", "estado": "Activo"},
+        {"nombre": "Sensor de temperatura", "estado": "Activo"},
+        {"nombre": "Climatizador", "estado": "Revisión"},
+    ]
+    return render(
+        request,
+        "dispositivos/catalogo.html",
+        {"dispositivos": dispositivos},
     )

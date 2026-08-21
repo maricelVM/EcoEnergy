@@ -15,4 +15,5 @@ urlpatterns = [
         views.estado_dispositivo,
         name="estado",
     ),
+    path("dispositivos/", views.catalogo, name="catalogo"),
 ]
