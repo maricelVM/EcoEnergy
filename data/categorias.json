@@ -1,0 +1,17 @@
+[
+{
+"id": 21,
+"nombre": "Solar",
+"descripcion": "Sistemas de iluminación solares"
+},
+{
+"id": 22,
+"nombre": "Iluminación",
+"descripcion": "Sistemas de luz interior y exterior"
+},
+{
+"id": 23,
+"nombre": "Climatizador",
+"descripcion": "Sistemas de calefacción y aire acondicionado"
+}
+]

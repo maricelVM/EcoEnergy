@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "nombre": "Climatizador A1",
+        "consumo_kwh": 45.5,
+        "zona_id": 11,
+        "categoria_id": 23
+    },
+    {
+        "id": 2,
+        "nombre": "Medidor inteligente",
+        "consumo_kwh": 12.0,
+        "zona_id": 11,
+        "categoria_id": 21
+    },
+    {
+        "id": 3,
+        "nombre": "Luminaria LED pasillo",
+        "consumo_kwh": 8.2,
+        "zona_id": 10,
+        "categoria_id": 22
+    },
+    {
+        "id": 4,
+        "nombre": "Aire acondicionado oficina",
+        "consumo_kwh": 60.0,
+        "zona_id": 10,
+        "categoria_id": 23
+    },
+    {
+        "id": 5,
+        "nombre": "Sensor de consumo planta",
+        "consumo_kwh": 5.5,
+        "zona_id": 12,
+        "categoria_id": 21
+    },
+    {
+        "id": 6,
+        "nombre": "Iluminación planta sur",
+        "consumo_kwh": 30.0,
+        "zona_id": 12,
+        "categoria_id": 22
+    },
+    {
+        "id": 7,
+        "nombre": "Climatizador planta B",
+        "consumo_kwh": 90.0,
+        "zona_id": 12,
+        "categoria_id": 23
+    },
+    {
+        "id": 8,
+        "nombre": "Medidor oficina",
+        "consumo_kwh": 3.0,
+        "zona_id": 10,
+        "categoria_id": 21
+    }
+]
