@@ -1,5 +1,12 @@
 ﻿from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+
+from .services import (
+    cargar_dispositivos,
+    obtener_zonas_con_resumen,
+    obtener_detalle_zona,
+)
+
 
 def inicio(request):
     contexto = {
@@ -13,6 +20,7 @@ def inicio(request):
         contexto,
     )
 
+
 def dispositivos_zona(request, zona_id):
     if zona_id != 3:
         return HttpResponse(
@@ -21,6 +29,7 @@ def dispositivos_zona(request, zona_id):
     return HttpResponse(
         f"Dispositivos de la zona {zona_id}"
     )
+
 
 def estado_dispositivo(request, dispositivo_id):
     if dispositivo_id != 1:
@@ -31,14 +40,21 @@ def estado_dispositivo(request, dispositivo_id):
         f"Estado del dispositivo {dispositivo_id}: activo"
     )
 
-def catalogo(request):
-    dispositivos = [
-        {"nombre": "Medidor inteligente", "estado": "Activo"},
-        {"nombre": "Sensor de temperatura", "estado": "Activo"},
-        {"nombre": "Climatizador", "estado": "Revisión"},
-    ]
-    return render(
-        request,
-        "dispositivos/catalogo.html",
-        {"dispositivos": dispositivos},
-    )
+def lista_zonas(request):
+    zonas = obtener_zonas_con_resumen()
+
+    contexto = {
+        "zonas": zonas,
+        "total_zonas": len(zonas),
+    }
+
+    return render(request, "dispositivos/lista_zonas.html", contexto)
+
+
+def detalle_zona(request, zona_id):
+    detalle = obtener_detalle_zona(zona_id)
+
+    if detalle is None:
+        raise Http404("La zona solicitada no existe.")
+
+    return render(request, "dispositivos/detalle_zona.html", detalle)
