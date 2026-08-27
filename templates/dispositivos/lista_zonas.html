@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Zonas | EcoEnergy{% endblock %}
+{% block content %}
+<h1>Zonas de consumo</h1>
+
+{% if zonas %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for zona in zonas %}
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ zona.nombre }}</h5>
+                <p class="card-text">
+                    Límite: {{ zona.limite_kwh }} kWh<br>
+                    Dispositivos: {{ zona.cantidad_dispositivos }}
+                </p>
+                <a href="{% url 'dispositivos:detalle_zona' zona.id %}" class="btn btn-primary">
+                    Ver detalle
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-muted">No hay zonas disponibles.</p>
+{% endif %}
+{% endblock %}
