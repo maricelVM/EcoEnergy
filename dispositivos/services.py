@@ -28,16 +28,33 @@ def obtener_zonas_con_resumen():
     dispositivos = cargar_dispositivos()
 
     resumen = []
+
     for zona in zonas:
         dispositivos_zona = [
-            d for d in dispositivos if d["zona_id"] == zona["id"]
+            d for d in dispositivos
+            if d["zona_id"] == zona["id"]
         ]
+
+        consumo_total = sum(
+            d["consumo_kwh"] for d in dispositivos_zona
+        )
+
+        estado = (
+            "LÍMITE SUPERADO"
+            if consumo_total > zona["limite_kwh"]
+            else "DENTRO DEL LIMITE"
+
+        )
+
         resumen.append({
             "id": zona["id"],
             "nombre": zona["nombre"],
-            "limite_kwh": zona["limite_kwh"],
             "cantidad_dispositivos": len(dispositivos_zona),
+            "consumo_total": consumo_total,
+            "limite_kwh": zona["limite_kwh"],
+            "estado": estado,
         })
+
     return resumen
 
 

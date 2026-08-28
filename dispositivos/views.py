@@ -40,6 +40,7 @@ def estado_dispositivo(request, dispositivo_id):
         f"Estado del dispositivo {dispositivo_id}: activo"
     )
 
+
 def lista_zonas(request):
     zonas = obtener_zonas_con_resumen()
 
@@ -58,3 +59,26 @@ def detalle_zona(request, zona_id):
         raise Http404("La zona solicitada no existe.")
 
     return render(request, "dispositivos/detalle_zona.html", detalle)
+
+
+def resumen_zonas(request):
+    zonas = obtener_zonas_con_resumen()
+
+    total_zonas = len(zonas)
+    total_dispositivos = sum(zona["cantidad_dispositivos"] for zona in zonas)
+    consumo_total = sum(zona["consumo_total"] for zona in zonas)
+
+    contexto = {
+        "zonas": zonas,
+        "total_zonas": total_zonas,
+        "total_dispositivos": total_dispositivos,
+        "consumo_total": consumo_total,
+    }
+
+    return render(
+        request,
+        "dispositivos/resumen_zonas.html",
+        contexto,
+    )
+
+
