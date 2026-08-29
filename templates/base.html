@@ -7,16 +7,19 @@
 <meta charset="utf-8">
 <title>{% block title %}EcoEnergy{% endblock %}</title>
 {% bootstrap_css %}
+<style>
+    .fondo-celeste {
+        background-color: #0dcaf0;
+    }
+</style>
 </head>
 
 <body class="container py-4">
 
-<nav>
+<nav class="d-flex justify-content-end gap-3 p-2">
     <a href="{% url 'dispositivos:inicio' %}">Inicio</a>
     <a href="{% url 'dispositivos:lista_zonas' %}">Zonas</a>
-    <a href="{% url 'dispositivos:resumen_zonas' %}">
-        Resumen de consumo
-    </a>
+    <a href="{% url 'dispositivos:resumen_zonas' %}">Resumen</a>
 </nav>
 
 <main>
